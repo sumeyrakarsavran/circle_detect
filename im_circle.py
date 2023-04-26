@@ -7,11 +7,11 @@ import numpy as np
 from std_msgs.msg import Int64, Float64
 from tulpar.msg import camera
 
-"""liste = []
+liste = []
 for i in range(1,1000):
     i = str(i)
     liste.append(i+'.avi')
-a = random.choice(liste)"""
+a = random.choice(liste)
 
 def imagePublish():
     konum = camera ()
@@ -25,8 +25,8 @@ def imagePublish():
     merkezX = 512
     merkezY = 384
     flip = 2
-    """fourcc = cv2.VideoWriter_fourcc (*'XVID')
-    out = cv2.VideoWriter (a, fourcc, 15.0, (1024, 768))"""
+    fourcc = cv2.VideoWriter_fourcc (*'XVID')
+    out = cv2.VideoWriter (a, fourcc, 15.0, (1024, 768))
 
     camSet = 'nvarguscamerasrc !  video/x-raw(memory:NVMM), width=3264, height=2464, ' \
              'format=NV12, framerate=21/1 ! nvvidconv flip-method=' + str (flip) + \
@@ -78,7 +78,7 @@ def imagePublish():
         frame = cv2.line(frame, (502,384), (522,384), (0,0,255), 4)""" #center crosshair
         
         
-        #out.write (frame)
+        out.write (frame)
         if len (contours_blue) > 0:
             #blue
             c = max (contours_blue, key=cv2.contourArea)
@@ -119,9 +119,9 @@ def imagePublish():
                 konum.bolge = int (10)
                 if r >= 0:
 
-                    """frame = cv2.line(frame, ((int(x)), (int(y) + 10)), ((int(x)), (int(y) - 10)), (0, 255,0), 5)
+                    frame = cv2.line(frame, ((int(x)), (int(y) + 10)), ((int(x)), (int(y) - 10)), (0, 255,0), 5)
                     frame = cv2.line(frame, ((int(x) - 10), (int(y))), ((int(x) + 10), (int(y))), (0, 255,0), 5)
-                    out.write(frame)"""
+                    out.write(frame)
 
 
                     centerX2 = int (a)
